@@ -1,8 +1,9 @@
-* { 
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     min-height: 100vh;
     display: flex;
@@ -33,13 +34,13 @@ body {
     text-align: center;
 }
 
-.calculator-buttons > div {
+.calculator-buttons>div {
     padding: 16px;
     border: 1px solid black;
     border-radius: 5px;
 }
 
-.grid-row-span-3{
+.grid-row-span-3 {
     grid-column: span 3;
     align-self: center;
 }
@@ -50,4 +51,11 @@ body {
     align-items: center;
 }
 
+.button {
+    transition: all .07s ease;
+}
 
+.pressed {
+    transform: scale(0.9);
+    background-color: #c0c0c0;
+}
