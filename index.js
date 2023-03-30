@@ -163,4 +163,3 @@ function updateDisplay(number) {
 generateCalculator();
 
 // TO-DO: Calculation history
-// TO-DO: Bind keys
