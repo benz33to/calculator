@@ -4,6 +4,7 @@ let operator1 = "";
 let operator2 = "";
 let operandAction = null;
 let resolved = false;
+let operation = "";
 
 const calculatorButtons = {
     reset: {
@@ -126,8 +127,12 @@ function setNewOperation(valueToAdd) {
 };
 
 function setOperand(buttonPressed) {
+    if (operandAction) {
+        return;
+    }
     const operand = calculatorButtons[buttonPressed].value;
     operandAction = calculatorButtons[buttonPressed].action;
+    operation = buttonPressed;
     updateDisplay(operand);
 };
 
@@ -145,6 +150,7 @@ function initialize(number = null) {
     operator1 = number ? number.toString() : "";
     operator2 = "";
     operandAction = null;
+    operation = "";
     updateDisplay(number || 0);
 };
 
@@ -152,7 +158,12 @@ function operate(operator1, operator2, operandAction) {
     if (operator1 === "" || operator2 === "" || !operandAction) {  //Do nothing if operators or operand misses
         return;
     }
-    const result = operandAction(Number(operator1), Number(operator2));
+    if (operation === 'divide' &&  +operator2 === 0) {
+        alert(`Can't divide by ${operator2}`);
+        initialize();
+        return;
+    }
+    const result = parseFloat(operandAction(Number(operator1), Number(operator2)).toFixed(4));
     initialize(result);
 };
 
