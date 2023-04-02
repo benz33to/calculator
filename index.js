@@ -116,6 +116,7 @@ function setNewOperation(valueToAdd) {
         operator1 = valueToAdd;
         resolved = false;
         updateDisplay(operator1);
+        resetHistory();
         return;
     }
     if (operandAction === null) {
