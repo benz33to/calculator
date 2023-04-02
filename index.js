@@ -1,4 +1,5 @@
 const display = document.querySelector('#display');
+const history = document.querySelector('#history');
 const buttonsContainer = document.querySelector('.calculator-buttons');
 let operator1 = "";
 let operator2 = "";
@@ -164,12 +165,18 @@ function operate(operator1, operator2, operandAction) {
         return;
     }
     const result = parseFloat(operandAction(Number(operator1), Number(operator2)).toFixed(4));
+    const operationSign = calculatorButtons[operation].value;
+    updateHistory(operator1, operator2, operationSign);
     initialize(result);
 };
 
-function updateDisplay(number) {
-    display.innerText = number;
+function updateDisplay(value) {
+    display.innerText = value;
 };
+
+function updateHistory(operator1, operator2, operand) {
+    history.innerText = `${operator1} ${operand} ${operator2} =`;
+}
 
 generateCalculator();
 
