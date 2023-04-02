@@ -9,55 +9,55 @@ let operation = "";
 
 const calculatorButtons = {
     reset: {
-        value: "C", type: "action", classes: ["button"], action: null, keyCode: 46,
+        value: "C", type: "action", classes: ["button", "operand"], action: null, keyCode: 46,
     },
     divide: {
-        value: "/", type: "operand", classes: ["button"], action: (operator1, operator2) => (operator1 / operator2), keyCode: 111,
+        value: "/", type: "operand", classes: ["button", "operand"], action: (operator1, operator2) => (operator1 / operator2), keyCode: 111,
     },
     multiply: {
-        value: "*", type: "operand", classes: ["button"], action: (operator1, operator2) => (operator1 * operator2), keyCode: 106,
+        value: "*", type: "operand", classes: ["button", "operand"], action: (operator1, operator2) => (operator1 * operator2), keyCode: 106,
     },
     subtract: {
-        value: "-", type: "operand", classes: ["button"], action: (operator1, operator2) => (operator1 - operator2), keyCode: 109,
+        value: "-", type: "operand", classes: ["button", "operand"], action: (operator1, operator2) => (operator1 - operator2), keyCode: 109,
     },
     seven: {
-        value: 7, type: "operator", classes: ["button"], action: null, keyCode: 103,
+        value: 7, type: "operator", classes: ["button", "operator"], action: null, keyCode: 103,
     },
     eight: {
-        value: 8, type: "operator", classes: ["button"], action: null, keyCode: 104,
+        value: 8, type: "operator", classes: ["button", "operator"], action: null, keyCode: 104,
     },
     nine: {
-        value: 9, type: "operator", classes: ["button"], action: null, keyCode: 105,
+        value: 9, type: "operator", classes: ["button", "operator"], action: null, keyCode: 105,
     },
     add: {
-        value: "+", type: "operand", classes: ["button"], action: (operator1, operator2) => (operator1 + operator2), keyCode: 107,
+        value: "+", type: "operand", classes: ["button", "operand"], action: (operator1, operator2) => (operator1 + operator2), keyCode: 107,
     },
     four: {
-        value: 4, type: "operator", classes: ["button"], action: null, keyCode: 100,
+        value: 4, type: "operator", classes: ["button", "operator"], action: null, keyCode: 100,
     },
     five: {
-        value: 5, type: "operator", classes: ["button"], action: null, keyCode: 101,
+        value: 5, type: "operator", classes: ["button", "operator"], action: null, keyCode: 101,
     },
     six: {
-        value: 6, type: "operator", classes: ["button"], action: null, keyCode: 102,
+        value: 6, type: "operator", classes: ["button", "operator"], action: null, keyCode: 102,
     },
     equals: {
-        value: "=", type: "action", classes: ["button", "grid-row-span-2"], action: (result) => display.innerText = result, keyCode: 13,
+        value: "=", type: "action", classes: ["button", "equals", "grid-row-span-2"], action: (result) => display.innerText = result, keyCode: 13,
     },
     one: {
-        value: 1, type: "operator", classes: ["button"], action: null, keyCode: 97,
+        value: 1, type: "operator", classes: ["button", "operator"], action: null, keyCode: 97,
     },
     two: {
-        value: 2, type: "operator", classes: ["button"], action: null, keyCode: 98,
+        value: 2, type: "operator", classes: ["button", "operator"], action: null, keyCode: 98,
     },
     three: {
-        value: 3, type: "operator", classes: ["button"], action: null, keyCode: 99,
+        value: 3, type: "operator", classes: ["button", "operator"], action: null, keyCode: 99,
     },
     zero: {
-        value: 0, type: "operator", classes: ["button", "grid-row-span-3"], action: null, keyCode: 96,
+        value: 0, type: "operator", classes: ["button", "operator", "grid-row-span-3"], action: null, keyCode: 96,
     },
     comma: {
-        value: ".", type: "operator", classes: ["button"], action: null, keyCode: 110,
+        value: ".", type: "operator", classes: ["button", "operator"], action: null, keyCode: 110,
     },
 }
 
@@ -152,6 +152,7 @@ function initialize(number = null) {
     operator2 = "";
     operandAction = null;
     operation = "";
+    number === null && resetHistory();
     updateDisplay(number || 0);
 };
 
@@ -176,6 +177,10 @@ function updateDisplay(value) {
 
 function updateHistory(operator1, operator2, operand) {
     history.innerText = `${operator1} ${operand} ${operator2} =`;
+}
+
+function resetHistory() {
+    history.innerText = "";
 }
 
 generateCalculator();

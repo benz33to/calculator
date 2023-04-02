@@ -6,6 +6,7 @@
 
 body {
     background-color: #121212;
+    font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -14,19 +15,18 @@ body {
 }
 
 .calculator-container {
-    color: white;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
 .calculator-display {
+    background-color: #bfbfbf;
     display: flex;
     flex-direction: column;
     padding: 16px 8px 0;
     font-size: 64px;
     text-align: right;
-    border: 1px solid white;
     border-radius: 5px;
 }
 
@@ -40,8 +40,11 @@ body {
 
 .calculator-buttons>div {
     padding: 16px;
-    border: 1px solid white;
     border-radius: 5px;
+}
+
+.calculator-buttons>div:hover {
+    cursor: pointer;
 }
 
 .grid-row-span-3 {
@@ -56,8 +59,9 @@ body {
 }
 
 #history {
-    font-size: medium;
     color: darkgray;
+    font-size: medium;
+    height: 16px;
 }
 
 .button {
@@ -67,6 +71,18 @@ body {
 .pressed {
     transform: scale(0.9);
     background-color: #c0c0c0;
+}
+
+.operand {
+    background-color: #bfbfbf;
+}
+
+.operator {
+    background-color: #F1F3F4;
+}
+
+.equals {
+    background-color: #4285F4;
 }
 
 /* TO-DO: Add missing styles */
